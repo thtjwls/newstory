@@ -1,13 +1,26 @@
 <div class="page-container">
     <div class="container-fluid">
-        <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#">HOME</a></li>
-            <li role="presentation"><a href="">문화</a></li>
-            <li role="presentation"><a href="">강의</a></li>
-            <li role="presentation"><a href="">IT</a></li>
-            <li role="presentation"><a href="">Design</a></li>
-            <li role="presentation"><a href="">여행·맛집</a></li>
-        </ul>
+		<div class="m-panel-wrap sidebar-offcanvas" id="sidebar">
+			<div class="m-panel-side-wrap">
+				<div class="clearfix margin-bottom-20">
+					<a href="javascript:panel();" class="btn btn-default hidden-md hidden-lg hidden-sm pull-right m-panel-close">
+					<i class="fa fa-times"></i>
+					</a>
+				</div>
+				<ul class="nav nav-tabs m-panel">
+					<li role="presentation" class="active"><a href="">HOME</a></li>
+					<li role="presentation"><a href="">문화</a></li>
+					<li role="presentation"><a href="">강의</a></li>
+					<li role="presentation"><a href="">IT</a></li>
+					<li role="presentation"><a href="">Design</a></li>
+					<li role="presentation"><a href="">여행·맛집</a></li>
+				</ul>
+				<div class="col-md-8 hidden-md hidden-lg hidden-sm">
+					<a href="/users/login" class="btn btn-primary btn-block btn-lg">로그인</a>
+					<a href="/users/membership" class="btn btn-primary btn-block btn-lg">회원가입</a>
+				</div>	
+			</div>
+		</div><!--  m-panel-wrap end -->
         <!-- page content
         <div class="row">
             <div class="col-md-2 col-sm-3 col-xs-12">
@@ -36,5 +49,5 @@
         <div class="jumbotron">
 
         </div>
-    </div>
-</div>
+    </div><!-- container end -->
+</div><!-- page-container end-->

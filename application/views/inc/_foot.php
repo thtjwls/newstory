@@ -13,7 +13,7 @@
     }
     body {
         /* Margin bottom by footer height */
-        margin-bottom: 60px;
+        margin-bottom: 60px !important;
     }
     .footer {
         position: absolute;

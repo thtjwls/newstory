@@ -13,15 +13,18 @@
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css">
     <!-- asset component -->
     <link rel="stylesheet" href="/css/components.css">
+	<!-- 사용자 정의 css -->
+	<link rel="stylesheet" href="/css/main.css?v=<?=date('YmdHis');?>" />
+	<script type="text/javascript" src="/js/main.js?v=<?=date('YmdHis');?>"></script>
     <title>Newstory</title>
 </head>
 <body>
 <div class="page-wrapper">
     <header class="header">
         <nav class="navbar navbar-default">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnbList">
+                    <button type="button" class="navbar-toggle collapsed" onclick="javascript:panel();">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -31,10 +34,13 @@
                 </div>
                 <div class="collapse navbar-collapse" id="gnbList">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/users/login">로그인</a></li>
-                        <li><a href="/users/membership">회원가입</a></li>
+						<li><a href="/users/login">로그인</a></li>
+						<li><a href="/users/membership">회원가입</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+	<style type="text/css">
+		
+	</style>

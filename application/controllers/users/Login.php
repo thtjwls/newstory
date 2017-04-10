@@ -6,6 +6,7 @@ class Login extends MY_Controller {
     public function index()
     {
         $this->load->view('inc/_head');
+		$this->load->view('inc/_page_head');
 
 
         $this->load->view('users/login_v');

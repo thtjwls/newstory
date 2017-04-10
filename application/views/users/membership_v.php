@@ -13,12 +13,12 @@
             </ul>
         </div>
         <div class="col-md-4 col-md-offset-2 col-sm-12">
-            <form action="" class="">
+            <form action="" method="post">
                 <div class="form-group">
                     <div class="input-icon left input-icon-lg">
                         <i class="fa fa-check"></i>
                         <label for="" class="control-label sr-only">이름</label>
-                        <input type="password" class="form-control input-lg" name="" placeholder="이름">
+                        <input type="text" class="form-control input-lg" name="" placeholder="(필수) 이름">
                         <p class="help-block"></p>
                     </div>
                 </div>
@@ -26,15 +26,15 @@
                     <div class="input-icon left input-icon-lg">
                         <label for="" class="control-label sr-only">아이디</label>
                         <i class="fa fa-check"></i>
-                        <input type="text" class="form-control input-lg" name="id" placeholder="아이디를 입력 해주세요.">
-                        <p class="help-block"></p>
+                        <input type="text" class="form-control input-lg" name="id" placeholder="(필수) 아이디를 입력 해주세요." onblur="membership_id_check(this);" maxlength="10">
+                        <p class="help-block hide"></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-icon left input-icon-lg">
                         <i class="fa fa-lock"></i>
                         <label for="" class="control-label sr-only">비밀번호</label>
-                        <input type="password" class="form-control input-lg" name="" placeholder="비밀번호를 입력 해주세요.">
+                        <input type="password" id="pass_field" class="form-control input-lg" name="" placeholder="(필수) 비밀번호를 입력 해주세요." onkeyup="membership_pass_check(this);">
                         <p class="help-block"></p>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <div class="input-icon left input-icon-lg">
                         <i class="fa fa-lock"></i>
                         <label for="" class="control-label sr-only">비밀번호 확인</label>
-                        <input type="password" class="form-control input-lg" name="" placeholder="비밀번호를 다시한번 입력 해주세요.">
+                        <input type="password" id="pass_confirm_field" class="form-control input-lg" name="" placeholder="(필수) 비밀번호를 다시한번 입력 해주세요." onkeyup="membership_pass_confirm_check(this,'pass_field');">
                         <p class="help-block"></p>
                     </div>
                 </div>
@@ -55,14 +55,21 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="" class="control-label sr-only">자기소개</label>
-                    <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                    <div class="input-icon left input-icon-lg">
+						<i class="fa fa-phone"></i>
+						<label for="" class="sr-only">연락처</label>
+						<input type="tel" class="form-control input-lg" name="" placeholder="연락처" />
+						<p class="help-block"></p>
+					</div>
                 </div>
                 <div class="form-group text-right">
-                    <input type="button" class="btn btn-primary btn-lg" value="회원가입">
+                    <input type="button" class="btn btn-primary btn-lg" value="완료!">
                     <input type="button" class="btn btn-default btn-lg" value="취소">
-                </div>
+                </div>				
             </form>
+			<input type="hidden" id="id_chk" value="false"/>
+			<input type="hidden" id="pass_chk" value="false"/>
+			<input type="hidden" id="pass_confirm_chk" value="false"/>
         </div>
     </div>
 </div>
