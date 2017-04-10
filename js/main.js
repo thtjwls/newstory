@@ -126,3 +126,29 @@ function membership_pass_confirm_check(ele,target)
 		$('#pass_confirm_chk').val('true');
 	}
 }
+
+//최종 유저 추가
+function membership_submit()
+{
+	if ( $("#newvid_membership_form input[name=name]").val() == "" ) {
+		alert("이름을 입력 해주세요.");
+	} else if ( $("#id_chk").val() == 'false' ) {
+		alert("아이디를 확인 해 주세요..");
+	} else if ($("#pass_chk").val() != "true" || $("#pass_confirm_chk") == "true") {
+		alert("비밀번호를 확인 해주세요.");
+	} else {
+		var submitUrl = "/users/membership/add";
+		/*
+		$("#newvid_membership_form").attr("action",submitUrl);
+        $("#newvid_membership_form").submit();
+        */
+		$.ajax({
+			url : submitUrl,
+			type:"POST",
+			data :$("#newvid_membership_form").serialize(),
+			success : function (data) {
+				console.log(data);
+			}
+		})
+	}
+}

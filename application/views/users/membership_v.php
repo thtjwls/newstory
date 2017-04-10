@@ -13,12 +13,12 @@
             </ul>
         </div>
         <div class="col-md-4 col-md-offset-2 col-sm-12">
-            <form action="" method="post">
+            <form action="" method="post" id="newvid_membership_form">
                 <div class="form-group">
                     <div class="input-icon left input-icon-lg">
                         <i class="fa fa-check"></i>
                         <label for="" class="control-label sr-only">이름</label>
-                        <input type="text" class="form-control input-lg" name="" placeholder="(필수) 이름">
+                        <input type="text" class="form-control input-lg" name="name" placeholder="(필수) 이름">
                         <p class="help-block"></p>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                     <div class="input-icon left input-icon-lg">
                         <i class="fa fa-lock"></i>
                         <label for="" class="control-label sr-only">비밀번호</label>
-                        <input type="password" id="pass_field" class="form-control input-lg" name="" placeholder="(필수) 비밀번호를 입력 해주세요." onkeyup="membership_pass_check(this);">
+                        <input type="password" id="pass_field" class="form-control input-lg" name="password" placeholder="(필수) 비밀번호를 입력 해주세요." onkeyup="membership_pass_check(this);">
                         <p class="help-block"></p>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <div class="input-icon left input-icon-lg">
                         <i class="fa fa-lock"></i>
                         <label for="" class="control-label sr-only">비밀번호 확인</label>
-                        <input type="password" id="pass_confirm_field" class="form-control input-lg" name="" placeholder="(필수) 비밀번호를 다시한번 입력 해주세요." onkeyup="membership_pass_confirm_check(this,'pass_field');">
+                        <input type="password" id="pass_confirm_field" class="form-control input-lg" name="re_password" placeholder="(필수) 비밀번호를 다시한번 입력 해주세요." onkeyup="membership_pass_confirm_check(this,'pass_field');">
                         <p class="help-block"></p>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                     <div class="input-icon left input-icon-lg">
                         <i class="fa fa-envelope"></i>
                         <label for="" class="control-label sr-only">이메일</label>
-                        <input type="password" class="form-control input-lg" name="" placeholder="Email">
+                        <input type="email" class="form-control input-lg" name="email" placeholder="Email">
                         <p class="help-block"></p>
                     </div>
                 </div>
@@ -58,13 +58,19 @@
                     <div class="input-icon left input-icon-lg">
 						<i class="fa fa-phone"></i>
 						<label for="" class="sr-only">연락처</label>
-						<input type="tel" class="form-control input-lg" name="" placeholder="연락처" />
+						<input type="tel" class="form-control input-lg" name="tel" placeholder="연락처" />
 						<p class="help-block"></p>
 					</div>
                 </div>
                 <div class="form-group text-right">
-                    <input type="button" class="btn btn-primary btn-lg" value="완료!">
-                    <input type="button" class="btn btn-default btn-lg" value="취소">
+                    <button type="button" class="btn btn-primary btn-lg" onclick="membership_submit();">
+                        완료
+                        <i class="fa fa-check"></i>
+                    </button>
+                    <button type="reset" class="btn btn-default btn-lg">
+                        취소
+                        <i class="fa fa-repeat"></i>
+                    </button>
                 </div>				
             </form>
 			<input type="hidden" id="id_chk" value="false"/>

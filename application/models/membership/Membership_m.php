@@ -8,8 +8,8 @@ class Membership_m extends CI_Model {
 		parent::__construct();
 	}
 
-	public function useridCheck( $id )
-	{
-
-	}
+    public function add( $data )
+    {
+        //$this->db->insert_string('newvid',$data);
+    }
 }

@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Membership extends MY_Controller {
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('membership/Membership_m');
+    }
+
     public function index()
     {
         $this->load->view('inc/_head');
@@ -21,4 +27,16 @@ class Membership extends MY_Controller {
 
 		echo $query->num_rows();
 	}
+
+	public function add()
+    {
+        $data = $this->input->post(NULL,TRUE);
+
+        //$this->membership_m->add($data);
+
+        //print_r($data);
+        //$id = 1;
+        //$this->load->view('test',array('id'=>$id));
+    }
+
 }
