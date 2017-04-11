@@ -10,6 +10,18 @@ class Membership_m extends CI_Model {
 
     public function add( $data )
     {
-        //$this->db->insert_string('newvid',$data);
+        /* password hash */
+        $password = password_hash($data['password'],PASSWORD_BCRYPT);
+
+        $insert = array(
+            'name'      => $data['name'],
+            'id'        => $data['id'],
+            'password'  => $password,
+            'email'     => $data['email'],
+            'tel'       => $data['tel']
+        );
+        $result = $this->db->insert('users',$insert);
+
+        return $result;
     }
 }

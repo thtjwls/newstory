@@ -6,7 +6,7 @@ class Membership extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('membership/Membership_m');
+        $this->load->model('membership/membership_m');
     }
 
     public function index()
@@ -32,11 +32,35 @@ class Membership extends MY_Controller {
     {
         $data = $this->input->post(NULL,TRUE);
 
-        //$this->membership_m->add($data);
+        $result = $this->membership_m->add($data);
+
+        try {
+            if ( $result ) {
+                $this->add_success();
+            } else {
+                
+            }
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
 
         //print_r($data);
         //$id = 1;
         //$this->load->view('test',array('id'=>$id));
+    }
+
+    //로그인 성공시 리다이렉트
+    public function add_success()
+    {
+        $this->load->view('inc/_head');
+
+        $this->load->view('users/add_success');
+        $this->load->view('inc/_foot');
+    }
+
+    public function test()
+    {
+
     }
 
 }

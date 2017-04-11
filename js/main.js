@@ -138,17 +138,20 @@ function membership_submit()
 		alert("비밀번호를 확인 해주세요.");
 	} else {
 		var submitUrl = "/users/membership/add";
-		/*
+
 		$("#newvid_membership_form").attr("action",submitUrl);
         $("#newvid_membership_form").submit();
-        */
+
+/*
 		$.ajax({
 			url : submitUrl,
 			type:"POST",
-			data :$("#newvid_membership_form").serialize(),
+			data :{$("#newvid_membership_form").serialize()},
 			success : function (data) {
 				console.log(data);
 			}
 		})
+		*/
 	}
+
 }

@@ -9,6 +9,9 @@
     <!-- bootstrap -->
     <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css">
     <script src="/lib/bootstrap/js/bootstrap.js"></script>
+    <!-- bootstrap sweetalert -->
+    <script src="/lib/bootstrap-sweetalert/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="/lib/bootstrap-sweetalert/sweetalert.css">
     <!-- font-awesome -->
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css">
     <!-- asset component -->
@@ -34,13 +37,21 @@
                 </div>
                 <div class="collapse navbar-collapse" id="gnbList">
                     <ul class="nav navbar-nav navbar-right">
-						<li><a href="/users/login">로그인</a></li>
-						<li><a href="/users/membership">회원가입</a></li>
+                        <?php
+                        if ( ! $this->session->is_login ) {
+                            ?>
+                            <li><a href="/users/login">로그인</a></li>
+                            <li><a href="/users/membership">회원가입</a></li>
+                        <?
+                        } else {
+                            ?>
+                            <li><a href="/users/login/logout">로그아웃</a></li>
+                            <li><a href="/users/membership">My page</a></li>
+                        <?
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-	<style type="text/css">
-		
-	</style>
