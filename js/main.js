@@ -131,11 +131,11 @@ function membership_pass_confirm_check(ele,target)
 function membership_submit()
 {
 	if ( $("#newvid_membership_form input[name=name]").val() == "" ) {
-		alert("이름을 입력 해주세요.");
+		swal("이름을 입력 해주세요.");
 	} else if ( $("#id_chk").val() == 'false' ) {
-		alert("아이디를 확인 해 주세요..");
+		swal("아이디를 확인 해 주세요..");
 	} else if ($("#pass_chk").val() != "true" || $("#pass_confirm_chk") == "true") {
-		alert("비밀번호를 확인 해주세요.");
+		swal("비밀번호를 확인 해주세요.");
 	} else {
 		var submitUrl = "/users/membership/add";
 

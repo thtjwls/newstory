@@ -27,6 +27,13 @@ class Login_m extends CI_Model
         /* */
     }
 
+    public function getIdx( $data )
+    {
+        $query = $this->db->get_where('users',array('id'=>$data['id']));
+
+        return $query->row()->idx;
+    }
+
     public function getPassword( $data )
     {
         $query = $this->db->get_where('users',array('id'=>$data['id']));

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="autocomplete" content="off" />
     <script src="/js/jquery.min.js"></script>
     <script src="/lib/jquery.cookie.js"></script>
     <!-- bootstrap -->
@@ -27,7 +28,7 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" onclick="javascript:panel();">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnbList">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -36,9 +37,20 @@
                     <a class="navbar-brand" href="/">NewStory</a>
                 </div>
                 <div class="collapse navbar-collapse" id="gnbList">
+                    <ul class="nav navbar-nav">
+                        <? foreach ( $gnb as $g ) { ?>
+                            <li role="presentation" class="<? if (substr($pagecode,0,2) == substr($g[0],0,2)) { echo 'active'; }?>"><a href="<?=$g[3];?>"><?=$g[1];?></a></li>
+                        <? } ?>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                     <ul class="nav navbar-nav navbar-right">
                         <?php
-                        if ( ! $this->session->is_login ) {
+                        if ( ! get_cookie('is_login')  ) {
                             ?>
                             <li><a href="/users/login">로그인</a></li>
                             <li><a href="/users/membership">회원가입</a></li>

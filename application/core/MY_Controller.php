@@ -11,8 +11,14 @@ class MY_Controller extends CI_Controller
     /**
      * MY_Controller constructor.
      */
+    public $gnb;
+
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('Category');
+
+        $this->gnb = $this->category->Gnb();
+
     }
 }

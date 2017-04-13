@@ -5,12 +5,14 @@ class Login extends MY_Controller {
 
     public function index()
     {
-        $this->load->view('inc/_head');
-		$this->load->view('inc/_page_head');
+        $param = array(
+            'pagecode'=>'FFFFFF',
+            'gnb'   => $this->gnb
+        );
 
-        $name = $this->session->user_id;
+        $this->load->view('inc/_head',$param);
 
-        $this->load->view('users/login_v',array('name'=>$name));
+        $this->load->view('users/login_v');
 
         $this->load->view('inc/_foot');
 
@@ -33,8 +35,37 @@ class Login extends MY_Controller {
                 
             } else {
                 /* 세션인증 */
+                /*
                 $this->session->set_userdata('user_id',$this->input->post('id',TRUE));
                 $this->session->set_userdata('is_login',TRUE);
+                */
+
+                $remember = $this->input->post('remember',TRUE);
+
+
+                $exp = ($remember == 'true' )
+                    ? 60*60*24*365
+                    : 0;
+
+                $cookie[0] = array(
+                    'name'   => 'is_login',
+                    'value'  => 'true',
+                    'expire' => $exp,
+                    'domain' => '',
+                    'path'   => '/',
+                );
+
+                $cookie[1] = array(
+                    'name'   => 'newvid_set_Number',
+                    'value'  => $this->Login_m->getIdx( $data ),
+                    'expire' => $exp,
+                    'domain' => '',
+                    'path'   => '/',
+                );
+
+                set_cookie($cookie[0]);
+                set_cookie($cookie[1]);
+
 
                 echo TRUE;
             }
@@ -48,6 +79,9 @@ class Login extends MY_Controller {
 
     public function logout()
     {
-        $this->session->sess_destroy();
+        delete_cookie('is_login');
+        delete_cookie('newvid_set_Number');
+
+        redirect('/');
     }
 }

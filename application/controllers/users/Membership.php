@@ -11,8 +11,12 @@ class Membership extends MY_Controller {
 
     public function index()
     {
-        $this->load->view('inc/_head');
-		$this->load->view('inc/_page_head');
+        $param = array(
+            'pagecode'=>'FFFFFF',
+            'gnb'   => $this->gnb
+        );
+
+        $this->load->view('inc/_head',$param);
 
 
         $this->load->view('users/membership_v');
