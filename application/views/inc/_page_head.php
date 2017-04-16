@@ -17,15 +17,6 @@
 				<ul class="nav nav-tabs m-panel <? if ($pagecode == 'FFFFFF') echo 'hidden'?>">
                     <? foreach ( $gnb as $g ) { ?>
                         <li role="presentation" class="<? if (substr($pagecode,0,2) == substr($g[0],0,2)) { echo 'active'; }?>"><a href="<?=$g[3];?>"><?=$g[1];?></a></li>
-                        <!--
-					<li role="presentation" class="active"><a href="">HOME</a></li>
-                    <li role="presentation"><a href="">취미·유머</a></li>
-					<li role="presentation"><a href="">문화</a></li>
-					<li role="presentation"><a href="">강의</a></li>
-					<li role="presentation"><a href="">IT</a></li>
-					<li role="presentation"><a href="">Design</a></li>
-					<li role="presentation"><a href="">여행·맛집</a></li>
-					-->
                     <? } ?>
 				</ul>
 			</div>

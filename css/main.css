@@ -9,7 +9,9 @@ p.help-block.hide { display:none; }
 	justify-content: center;
 }
 
-/*  */
+.title-image { height:70px; }
+
+/* 체크박스 */
 .checks {position: relative;}
 .checks input[type="checkbox"] {
 	/* 실제 체크박스는 화면에서 숨김 */

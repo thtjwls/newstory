@@ -25,6 +25,12 @@
 <body>
 <div class="page-wrapper">
     <header class="header">
+        <div class="container hidden-sm hidden-xs">
+            <h1 class="text-center margin-bottom-20">
+                    <!--<img src="/images/ci_img/logo_ci_main.png" alt="메인로고" class="title-image">-->
+                    Newstory
+            </h1>
+        </div>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -34,7 +40,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">NewStory</a>
+                    <a class="navbar-brand hidden-md hidden-lg" href="/">NewStory</a>
                 </div>
                 <div class="collapse navbar-collapse" id="gnbList">
                     <ul class="nav navbar-nav">
