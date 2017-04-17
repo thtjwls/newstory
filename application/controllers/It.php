@@ -36,7 +36,7 @@ class It extends MY_Controller {
 
         $this->load->view('inc/_head',$this->param);
 
-
+        $this->load->view('it/list_v');
 
         $this->load->view('inc/_foot');
     }

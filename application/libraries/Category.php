@@ -11,6 +11,18 @@ class Category {
      */
     public function Gnb()
     {
+        /*
+         *
+         * $CI->load->database();
+         */
+        $CI =& get_instance();
+        $CI->load->model('Category_m');
+
+        $menu1 = $CI->Category_m->getData();
+
+        return $menu1;
+
+        /*
         $menu1 = array(
             array('000000','HOME','0','/'),
             array('100000','취미·유머','0','/hobby'),
@@ -22,6 +34,7 @@ class Category {
         );
 
         return $menu1;
+        */
     }
 
     /**

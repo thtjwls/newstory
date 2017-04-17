@@ -44,8 +44,8 @@
                 </div>
                 <div class="collapse navbar-collapse" id="gnbList">
                     <ul class="nav navbar-nav">
-                        <? foreach ( $gnb as $g ) { ?>
-                            <li role="presentation" class="<? if (substr($pagecode,0,2) == substr($g[0],0,2)) { echo 'active'; }?>"><a href="<?=$g[3];?>"><?=$g[1];?></a></li>
+                        <? foreach ( $gnb->result_array() as $g ) { ?>
+                            <li role="presentation" class="<? if (substr($pagecode,0,2) == substr($g['idx'],0,2)) { echo 'active'; }?>"><a href="<?=$g['path'];?>"><?=$g['name'];?></a></li>
                         <? } ?>
                     </ul>
                     <form class="navbar-form navbar-left" role="search">

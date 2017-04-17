@@ -1,5 +1,4 @@
 *.ini
-*.sql
 application/config/database.php
 .htaccess
 =======
