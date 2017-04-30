@@ -20,7 +20,7 @@ class Membership_m extends CI_Model {
             'email'     => $data['email'],
             'tel'       => $data['tel']
         );
-        $result = $this->db->insert('users',$insert);
+        $result = $this->db->insert('nb_members',$insert);
 
         return $result;
     }

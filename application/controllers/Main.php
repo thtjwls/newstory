@@ -5,16 +5,11 @@ class Main extends MY_Controller {
 
 	public function index()
 	{
-	    $param = array(
-	        'pagecode'=>'000000',
-            'gnb'   => $this->gnb
-        );
 
-		$this->load->view('inc/_head',$param);
-//		$this->load->view('inc/_page_head');
+	    $this->load->view('inc/_head');
+        $this->load->view('inc/_menu');
 
-        $this->load->view('home/home');
-
-		$this->load->view('inc/_foot');
+        $this->load->view('main_v');
+        $this->load->view('inc/_foot');
 	}
 }

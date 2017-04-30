@@ -15,6 +15,6 @@ class Main_m extends CI_Model
 
     public function getLists($category)
     {
-        $query = $this->db->query('SELECT * FROM `newstory_list` where FK_category = "100000" left join newstory_category on newstory_list.FK_category = newstory_category.idx');
+        $query = $this->db->query('SELECT * FROM `nb_list` where FK_category = "100000" left join nb_category on nb_list.FK_category = nb_category.idx');
     }
 }

@@ -19,7 +19,7 @@ class Category_m extends CI_Model
      */
     public function getData()
     {
-        $query = $this->db->query('SELECT * FROM newstory_category ORDER BY idx ASC');
+        $query = $this->db->query('SELECT * FROM nb_category ORDER BY idx ASC');
         //$result = $query->result_array();
 
         return $query;
