@@ -9,6 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login_m extends CI_Model
 {
 
+	private $table = 'nb_members';
+
     public function __construct()
     {
         parent::__construct();
@@ -17,7 +19,7 @@ class Login_m extends CI_Model
 
     public function getRow( $data )
     {
-        $query = $this->db->get_where('users',array('id'=>$data['id']));
+        $query = $this->db->get_where($this->nb_members,array('id'=>$data['id']));
 
         return $query->num_rows();
     }
@@ -29,28 +31,28 @@ class Login_m extends CI_Model
 
     public function getIdx( $data )
     {
-        $query = $this->db->get_where('users',array('id'=>$data['id']));
+        $query = $this->db->get_where($this->nb_members,array('id'=>$data['id']));
 
         return $query->row()->idx;
     }
 
     public function getPassword( $data )
     {
-        $query = $this->db->get_where('users',array('id'=>$data['id']));
+        $query = $this->db->get_where($this->nb_members,array('id'=>$data['id']));
 
         return $query->row()->password;
     }
 
     public function getEmail( $data )
     {
-        $query = $this->db->get_where('users',array('id'=>$data['id']));
+        $query = $this->db->get_where($this->nb_members,array('id'=>$data['id']));
 
         return $query->row()->getEmail;
     }
 
     public function getTel( $data )
     {
-        $query = $this->db->get_where('users',array('id'=>$data['id']));
+        $query = $this->db->get_where($this->nb_members,array('id'=>$data['id']));
 
         return $query->row()->getTel;
     }

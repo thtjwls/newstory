@@ -1,0 +1,46 @@
+/**
+ * @license Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or http://ckeditor.com/license
+ */
+
+CKEDITOR.editorConfig = function( config ) {
+
+	config.skin = 'office2013';
+	config.extraPlugins = 'widget,image2,lineutils,dialog,dialogui,widgetselection,codesnippet,youtube'; 
+	config.enterMode = CKEDITOR.ENTER_BR;
+
+	/* 유튜브 플러그인 */
+	config.youtube_width  =  '640' ;
+	config.youtube_height  =  '480';
+	config.youtube_responsive  =  true ;
+
+	/* 코드 스냅인 플러그인 */
+	config.codeSnippet_languages = {
+		javascript: 'JavaScript',
+		php: 'PHP'
+	};
+
+	config.toolbar = 'Basic';
+	
+
+	config.toolbar_Full = [ 
+			['Source','-','Save','NewPage','Preview','-','Templates','Bold','Italic','Underline','Strike'], 
+			['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print', 'SpellChecker', 'Scayt'], 
+			['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'], 
+			['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'], 
+			['BidiLtr', 'BidiRtl'], '/', ['Subscript','Superscript'], 
+			['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'], 
+			['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'], 
+			['Link','Unlink','Anchor'], 
+			['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'], 
+			'/', 
+			['Styles','Format','Font','FontSize'], 
+			['TextColor','BGColor'], ['Maximize', 'ShowBlocks','-','About'] 
+		]; 
+	
+	config.toolbar_Basic = [ 
+			['Styles','Format','Font','FontSize','Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink','-'],
+			['TextColor','BGColor','-','Table','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','Image']
+		];
+
+};

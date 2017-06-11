@@ -1,0 +1,110 @@
+html { overflow-y:scroll;}
+a:hover { text-decoration: none; }
+.form-control#nb_category { width:20%; border-right:0; }
+.form-control#nb_category:focus,.form-control#wr_subject:focus { box-shadow : none; }
+.form-control#wr_subject { width:80%; border-left:0; }
+textarea { resize:none;}
+.media-image { max-width:120px; max-height: 90px; }
+.padding-0 { padding:0 !important; }
+#re_opener + #re_step_comment_container_full { display:none; }
+#re_opener.open + #re_step_comment_container_full { display:block; }
+#list-media-inner-wrap { max-height:106px; overflow:hidden; text-decoration:none; }
+#list-media-inner-wrap .media-image { max-height:106px; }
+.search_form { border-top:0; border-left:0; border-right:0; }
+#image-con { max-width: 130px; overflow:hidden;}
+/* 일부 IDE 에서 이부분 오류가 나는데 정상임 */
+.thumbnail .caption { word-break: break-all; }
+.views-contents-tx {
+    -ms-word-break: break-all;
+    word-break: break-all;}
+
+.main-prev-container *:not(code),.main-prev-container *:not(pre) { margin: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/*
+.grid-item{height:440px;}
+.contents_cont{height:190px; overflow:hidden; text-overflow:ellipsis;}
+.main_grid .caption:not(:first-of-type){padding-top:0; padding-bottom:0;}
+.contents-pre{width:100%;}
+
+.padding-top-0{padding-top:0 !important;}
+.contents-pre{background:none; border:0;}
+*/
+
+@media ( max-width: 991px ) {
+    .aside-panel-wrap {
+        position:fixed;
+        width:100%;
+        height:100%;
+        top:-100%;
+        left:100%;
+        opacity: 0;
+        z-index : 9999;
+        background-color: rgba(255,255,255,1);
+        padding:15px;
+        -webkit-transition-duration: 0.4s;
+        -moz-transition-duration: 0.4s;
+        -ms-transition-duration: 0.4s;
+        -o-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        -webkit-transition-property: opacity, left,top;
+        -moz-transition-property: opacity, left,top;
+        -ms-transition-property: opacity, left,top;
+        -o-transition-property: opacity, left,top;
+        transition-property: opacity, left,top;
+        overflow: scroll;
+    }
+
+    .search-group {
+        margin-bottom:30px;
+    }
+
+    .aside-panel-wrap.open {
+        top:0;
+        left:0;
+        opacity: 1;
+    }
+}
+
+.grid-item .thumbnail .main-prev-container { max-height: auto; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+
+iframe { max-width:100% !important; }
+.chat-div { 
+	position:relative; width:100%; height:0; z-index:9999999;
+	box-sizing:border-box;
+	background-color:#2F353B;
+	border-radius:15px;
+	overflow:hidden;
+	transition-duration:0.4s;
+	-webkit-transition-duration:0.4s;
+	-moz-transition-duration:0.4s;
+	-o-transition-duration:0.4s;
+	cursor:move;
+}
+
+.chat-div.open {
+	padding:30px 25px 60px 25px;
+	width:300px;
+	height:500px;
+}
+
+.chat-div #chat__module__name { 
+	margin-top:10px; 
+	transition-duration:0.4s;
+	-webkit-transition-duration:0.4s;
+	-moz-transition-duration:0.4s;
+	-o-transition-duration:0.4s;
+}
+
+
+.chat-div.open #chat__module__name { margin-top:17px; }
+
+.chat-div-inner { width:100%; height:100%; background-color:#FFF; }
+
+#chat__container__head { text-align:center; margin:0; }
+#chat__frame { overflow-y:hidden; height:100%; }
+#chat__module__title { margin:0; }
+#chat__module__title a { display:block; margin:0; color:#FFF; text-align:center; }

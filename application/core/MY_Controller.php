@@ -8,17 +8,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class MY_Controller extends CI_Controller
 {
-    /**
-     * MY_Controller constructor.
-     */
-    public $gnb;
+	public $menu;
+
+	public $meta;
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('Category');
+		$this->load->model("Main_m");
 
-        $this->gnb = $this->category->Gnb();
-
+		$result = $this->Main_m->getCategorys();
+        $this->menu = $result->result_array();
+		
     }
 }

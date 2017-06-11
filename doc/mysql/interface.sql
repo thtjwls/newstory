@@ -8,17 +8,17 @@
 CREATE TABLE nb_members(
   idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '인덱스',
   name VARCHAR(10) NOT NULL COMMENT '이름',
-  nickname VARCHAR(30) NOT NULL COMMENT '닉네임',
+  nick VARCHAR(30) NOT NULL COMMENT '닉네임',
   id VARCHAR(15) NOT NULL UNIQUE KEY COMMENT '아이디',
   password TEXT NOT NULL COMMENT '패스워드',
   email VARCHAR(20) NOT NULL COMMENT '이메일',
   in_use TINYINT(1) NOT NULL DEFAULT '1' COMMENT '사용여부',
   regist_day DATETIME NOT NULL COMMENT '가입일',
-  regist_ip VARCHAR(15) NOT NULL COMMENT '가입 ip'
+  regist_ip VARCHAR(25) NOT NULL COMMENT '가입 ip'
 ) ENGINE = InnoDB DEFAULT CHAR SET = UTF8 COMMENT = '회원';
 
 /**
- * view : 글번호,댓글, 카테고리, 글제목, 작성자, 뷰, 좋아요
+ * view : 글번호,댓글, 카테고리, 글제목, 작성자, 뷰,
  * option : 삭제여부, 비밀글여부
  */
 CREATE TABLE nb_category(
@@ -31,17 +31,17 @@ CREATE TABLE nb_category(
 INSERT INTO nb_category (idx, name, sub_cnt, path)
 VALUES ('100000','HOME',0,'/');
 INSERT INTO nb_category (idx, name, sub_cnt, path)
-VALUES ('200000','취미·유머',0,'/hobby');
+VALUES ('200000','취미·유머',0,'/main/hobby');
 INSERT INTO nb_category (idx, name, sub_cnt, path)
-VALUES ('300000','문화',0,'/culture');
+VALUES ('300000','문화',0,'/main/culture');
 INSERT INTO nb_category (idx, name, sub_cnt, path)
-VALUES ('400000','강의',0,'/lecture');
+VALUES ('400000','강의',0,'/main/lecture');
 INSERT INTO nb_category (idx, name, sub_cnt, path)
-VALUES ('500000','IT',0,'/it');
+VALUES ('500000','IT',0,'/main/it');
 INSERT INTO nb_category (idx, name, sub_cnt, path)
-VALUES ('600000','Design',0,'/design');
+VALUES ('600000','Design',0,'/main/design');
 INSERT INTO nb_category (idx, name, sub_cnt, path)
-VALUES ('700000','여행·맛집',0,'/travel');
+VALUES ('700000','여행·맛집',0,'/main/travel');
 
 CREATE TABLE nb_list (
   idx INT not null PRIMARY KEY AUTO_INCREMENT comment '글번호 (code)',
@@ -50,12 +50,20 @@ CREATE TABLE nb_list (
   contents VARCHAR(255) NOT NULL comment '글 내용',
   writer INT NOT NULL comment '작성자 (code, foreign key)',
   views INT NOT NULL DEFAULT '0' comment '페이지 뷰',
-  likes INT NOT NULL DEFAULT '0' comment '좋아요',
   regist DATETIME NOT NULL comment '작성일',
   in_use TINYINT NOT NULL DEFAULT '1' comment '사용여부 (0 삭제, 1 사용)',
-  in_secret TINYINT NOT NULL DEFAULT '1' comment '비밀글 여부 (0 삭제, 1 사용)',
+  in_secret TINYINT NOT NULL DEFAULT '0' comment '비밀글 여부 (0 미사용, 1 사용)',
   FOREIGN KEY (`writer`) REFERENCES `nb_members` (`idx`),
   FOREIGN KEY (`FK_category`) REFERENCES `nb_category` (`idx`)
+) ENGINE = InnoDB DEFAULT CHARSET = UTF8;
+
+CREATE TABLE nb_likes (
+  idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT comment '인덱스',
+  pid INT NOT NULL comment '원글 번호',
+  FK_member INT NOT NULL comment '좋아요 누른 사람',
+  likes_regist DATETIME NOT NULL comment '좋아요 누른 시간',  
+  FOREIGN KEY (`FK_member`) REFERENCES `nb_members` (`idx`),
+  FOREIGN KEY (`pid`) REFERENCES `nb_list` (`idx`)
 ) ENGINE = InnoDB DEFAULT CHARSET = UTF8;
 
 CREATE TABLE nb_comment(
@@ -75,7 +83,7 @@ CREATE TABLE nb_comment_re(
   regist DATETIME NOT NULL COMMENT '작성일',
   writer INT NOT NULL COMMENT '답글 작성자',
   FOREIGN KEY (`writer`) REFERENCES `nb_members` (`idx`),
-  FOREIGN KEY (`idx`) REFERENCES `nb_comment` (`idx`)
+  FOREIGN KEY (`pid`) REFERENCES `nb_comment` (`idx`)
 ) ENGINE = InnoDB DEFAULT CHAR SET = UTF8 COMMENT ='댓글 > 답글';
 
 CREATE TABLE nb_files (
@@ -90,22 +98,26 @@ CREATE TABLE nb_files (
 /**
 insert test data
  */
-
-INSERT INTO nb_list (FK_category,subject,contents,writer,views,likes,regist,in_use,in_secret)
-VALUES ('200000','1번째 테스트 제목','첫번째 테스트 본문내용',2,3333,503,'now()',1,0);
-INSERT INTO nb_list (FK_category,subject,contents,writer,views,likes,regist,in_use,in_secret)
-VALUES ('200000','2번째 테스트 제목','2번째 테스트 본문내용',2,3333,503,'now()',1,0);
-INSERT INTO nb_list (FK_category,subject,contents,writer,views,likes,regist,in_use,in_secret)
-VALUES ('200000','3번째 테스트 제목','3번째 테스트 본문내용',2,3333,503,'now()',1,0);
-INSERT INTO nb_list (FK_category,subject,contents,writer,views,likes,regist,in_use,in_secret)
-VALUES ('200000','4번째 테스트 제목','4번째 테스트 본문내용',2,3333,503,'now()',1,0);
+ /*
+ALTER TABLE nb_list AUTO_INCREMENT=1;
+ALTER TABLE nb_comment AUTO_INCREMENT=1;
+ALTER TABLE nb_comment_re AUTO_INCREMENT=1;
+*/
 
 
-INSERT INTO nb_comment (pid,contents,regist,writer)
-VALUES (1,'1번째 글의 1번째 댓글','now()',2);
-INSERT INTO nb_comment (pid,contents,regist,writer)
-VALUES (2,'2번째 글의 1번째 댓글','now()',2);
-INSERT INTO nb_comment (pid,contents,regist,writer)
-VALUES (1,'1번째 글의 2번째 댓글','now()',2);
-INSERT INTO nb_comment (pid,contents,regist,writer)
-VALUES (1,'3번째 글의 3번째 댓글','now()',2);
+/**
+select
+ */
+SELECT
+  nb_list.*,
+  nb_members.id,nb_members.nick,nb_members.name,
+  nb_category.name
+FROM nb_list
+LEFT JOIN nb_members
+  ON nb_list.writer = nb_members.idx
+LEFT JOIN nb_category
+  ON nb_list.FK_category = nb_category.idx
+LEFT JOIN nb_comment
+  ON nb_list.idx = nb_comment.pid
+  ;
+

@@ -26,8 +26,11 @@ class Login extends MY_Controller {
 
 
 
+
+
         if ( $this->Login_m->getRow( $data ) == 1 )
-        {
+        {			
+
             if ( ! password_verify($this->input->post('password',TRUE) , $this->Login_m->getPassword($data))) {
                 /* 비밀번호 다름 */
                 echo '아이디 또는 비밀번호가 다릅니다.';
